@@ -1,0 +1,37 @@
+
+
+<h1>Products</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Product</a>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th style="width: 10%"></th>
+    <th style="width: 30%">Name</th>
+    <th style="width: 30%">Description</th>
+    <th style="width: 10%">Price</th>
+    <th style="width: 10%">Quantity</th>
+    <th style="width: 10%"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <img class="rounded m-2" alt="" src="{{ product.url }}"
+         data-holder-rendered="true"  style="max-height: 60px; max-width: 60px;">
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td>${{ product.price }}</td>
+    <td>{{ product.amount }}</td>
+    <td style="white-space: nowrap">
+      <a routerLink="edit/{{ product.id }}" class="btn btn-sm btn-primary mr-1"
+      >Edit</a
+      >
+      <button
+        (click)="deleteProduct(product.id)"
+        class="btn btn-sm btn-danger btn-delete-user"
+      >
+        <span>Delete</span>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
